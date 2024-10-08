@@ -8,7 +8,7 @@ const WeatherMap = () => {
   return (
     <div>
       <MapContainer 
-        center={[-25.9667, 32.5833]} // Coordenadas de Maputo, Moçambique, ajuste conforme necessário
+        center={[-25.847335, 32.5741002]} // Coordenadas de Maputo, Moçambique, ajuste conforme necessário
         zoom={10} 
         style={{ height: "500px", width: "100%" }}>
         {/* Camada básica do mapa */}

@@ -1,0 +1,38 @@
+/* DailyForecast.css */
+
+.forecast-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .forecast-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .forecast-item {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: 48%;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+  
+  .forecast-item p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .forecast-item strong {
+    font-size: 16px;
+    color: #333;
+  }
+  
