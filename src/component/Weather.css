@@ -1,0 +1,49 @@
+/* Weather.css */
+
+.weather-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+    margin: auto; /* Centraliza horizontalmente */
+    margin-top: 50px; /* Margem superior */
+  }
+  
+  .weather-title {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .city-input {
+    padding: 10px;
+    width: calc(100% - 20px); /* Largura completa menos o padding */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .search-button {
+    padding: 10px 15px;
+    background-color: #007bff; /* Cor azul */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #0056b3; /* Tom mais escuro ao passar o mouse */
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
+  .weather-info {
+    font-size: 18px;
+    color: #666;
+  }
+  
