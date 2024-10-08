@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Weather.css'; // Certifique-se de criar este arquivo CSS para estilização
+import './Weather.css';
 
 const Weather = () => {
   const [temperature, setTemperature] = useState(null);
-  const [city, setCity] = useState('Mozambique, MZ'); // Cidade padrão
+  const [city, setCity] = useState('Mozambique, MZ'); 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchWeather = async () => {
-      if (!city) return; // Não faz nada se a cidade estiver vazia
+      if (!city) return; 
       setLoading(true);
-      setError(null); // Limpa erro antes da nova requisição
+      setError(null);
       try {
         const response = await axios.get('https://api.openweathermap.org/data/2.5/weather', {
           params: {
             q: city,
-            appid: 'f7b4deecb4fa9d1d218b7170e77edf96', // Substitua pela sua chave
-            units: 'metric' // Para Celsius, use 'imperial' para Fahrenheit
+            appid: 'f7b4deecb4fa9d1d218b7170e77edf96', 
+            units: 'metric'
           }
         });
         setTemperature(response.data.main.temp);
@@ -45,7 +45,7 @@ const Weather = () => {
         type="text" 
         value={city} 
         onChange={(e) => setCity(e.target.value)} 
-        onKeyPress={handleKeyPress} // Chama a função ao pressionar Enter
+        onKeyPress={handleKeyPress}
         placeholder="Digite a cidade"
         className="city-input"
       />
