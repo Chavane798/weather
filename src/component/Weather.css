@@ -19,7 +19,7 @@
   .city-input {
     padding: 10px;
     width: calc(100% - 20px); /* Largura completa menos o padding */
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 4px;
     margin-bottom: 10px;
   }
