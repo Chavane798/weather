@@ -1,0 +1,103 @@
+/* WeatherMap.css */
+.weather-map-container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .map-title {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .map-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .control-button {
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .control-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .loading-indicator {
+    color: #3498db;
+    font-weight: 500;
+  }
+  
+  .error-message {
+    color: #e74c3c;
+    font-weight: 500;
+  }
+  
+  .weather-popup {
+    min-width: 180px;
+    text-align: center;
+  }
+  
+  .weather-popup h3 {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #2c3e50;
+  }
+  
+  .weather-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+  }
+  
+  .temperature {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .weather-description {
+    text-transform: capitalize;
+    color: #7f8c8d;
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  
+  .weather-details {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #34495e;
+  }
+  
+  .weather-details p {
+    margin: 3px 0;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .weather-map-container {
+      padding: 15px;
+    }
+    
+    .map-controls {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }

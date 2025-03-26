@@ -8,26 +8,28 @@ const DailyForecast = () => {
   const [error, setError] = useState(null);
 
   const API_KEY = 'f7b4deecb4fa9d1d218b7170e77edf96';
-  const lat = -25.847335; // Latitude de Maputo, Moçambique (pode ajustar conforme necessário)
-  const lon = 32.5741002; // Longitude de Maputo, Moçambique
+  const lat = -25.847335; // Latitude de Maputo
+  const lon = 32.5741002; // Longitude de Maputo
 
   useEffect(() => {
     const fetchForecast = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://api.openweathermap.org/data/2.5/forecast/daily', {
+        // Using the One Call API which includes daily forecasts
+        const response = await axios.get('https://api.openweathermap.org/data/2.5/onecall', {
           params: {
             lat: lat,
             lon: lon,
-            cnt: 7, 
+            exclude: 'current,minutely,hourly,alerts',
             appid: API_KEY,
-            units: 'metric' 
+            units: 'metric'
           }
         });
-        setForecast(response.data.list);
+        setForecast(response.data.daily.slice(0, 7)); // Get first 7 days
         setError(null);
       } catch (err) {
         setError('Erro ao obter a previsão do tempo.');
+        console.error(err);
       }
       setLoading(false);
     };
@@ -35,19 +37,33 @@ const DailyForecast = () => {
     fetchForecast();
   }, []);
 
+  // Function to format the day name
+  const getDayName = (timestamp, index) => {
+    if (index === 0) return 'Hoje';
+    
+    const date = new Date(timestamp * 1000);
+    const days = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+    return days[date.getDay()];
+  };
+
   return (
     <div className="forecast-container">
-      <h2>Previsão do Tempo para 7 Dias</h2>
+      <h2>Previsão do Tempo para 7 Dias - Maputo</h2>
       {loading && <p>Carregando...</p>}
-      {error && <p>{error}</p>}
+      {error && <p className="error">{error}</p>}
       {!loading && !error && (
         <div className="forecast-list">
           {forecast.map((day, index) => (
-            <div key={index} className="forecast-item">
-              <p><strong>Dia {index + 1}</strong></p>
-              <p>Temperatura Máxima: {day.temp.max}°C</p>
-              <p>Temperatura Mínima: {day.temp.min}°C</p>
-              <p>Descrição: {day.weather[0].description}</p>
+            <div key={day.dt} className="forecast-item">
+              <p><strong>{getDayName(day.dt, index)}</strong></p>
+              <p>Máx: {Math.round(day.temp.max)}°C</p>
+              <p>Mín: {Math.round(day.temp.min)}°C</p>
+              <p>{day.weather[0].description}</p>
+              <img 
+                src={`https://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`} 
+                alt={day.weather[0].description}
+                width="50"
+              />
             </div>
           ))}
         </div>
